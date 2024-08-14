@@ -25,7 +25,7 @@ Whilst we would prefer a candidate to write in Vue/Nuxt for this technical chall
 
 We would like you to re-create a vehicle list component for one of our standard Search Results Pages (SRP).
 
-You can view the Figma for the design (here)[https://www.figma.com/design/MrZR9TZOVrI8pwBjJuDprZ/Code-Review-Template?node-id=1-2&m=dev]
+You can view the Figma for the design [here](https://www.figma.com/design/MrZR9TZOVrI8pwBjJuDprZ/Code-Review-Template?node-id=1-2&m=dev)
 
 Font (ignore SF PRO in Figma) - https://fonts.google.com/specimen/Inter
 
