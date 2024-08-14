@@ -1,0 +1,17 @@
+{
+  "name": "fe-tech-test-server",
+  "version": "1.0.0",
+  "description": "Demo api for Nexus Point FE tech test",
+  "main": "index.js",
+  "author": "Nexus Point",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
