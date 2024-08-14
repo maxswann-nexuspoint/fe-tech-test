@@ -15,6 +15,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/vehicles', (req, res) => {
+    const page_query = parseInt(req.query.page) || 1;
+    const results_per_page_query = parseInt(req.query.results_per_page) || 11;
+    // const from_query = parseInt(req.query.page) || 0;
+
+    const advert_classification_query = req.query.advert_classification || "All";
     const filePath = path.join(__dirname, 'mock-vehicle-search-response.json');
 
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -24,19 +29,49 @@ app.get('/vehicles', (req, res) => {
         }
 
         try {
-            // const jsonData = JSON.parse(data);
             const vehicleArray = JSON.parse(data);
 
+            let totalNewCount = 0;
+            let totalUsedCount = 0;
+            
+            // get counts for meta
+            vehicleArray.forEach(vehicle => {
+                if(vehicle.advert_classification === "New") {
+                    totalNewCount++;
+                } else if (vehicle.advert_classification === "Used") {
+                    totalUsedCount++;
+                }
+            })
+
+            let processedVehicleArray = vehicleArray;
+
+            if(advert_classification_query === "New") {
+                processedVehicleArray = processedVehicleArray.filter(vehicle => {
+                    return vehicle.advert_classification === "New"
+                })
+            } else if(advert_classification_query === "Used") {
+                processedVehicleArray = processedVehicleArray.filter(vehicle => {
+                    return vehicle.advert_classification === "Used"
+                })
+            }
+
+            let filteredTotal = processedVehicleArray.length;
+
+            processedVehicleArray = processedVehicleArray.slice(
+                ((page_query - 1) * results_per_page_query), 
+                (page_query * results_per_page_query)
+            )
+
             const jsonResponse = {
-                data: vehicleArray,
+                data: processedVehicleArray,
                 meta: {
-                    "current_page": 1,
-                    "from": 1,
-                    "last_page": 2,
-                    "per_page": 11,
-                    "total": 22,
-                    "new_vehicles": 11,
-                    "used_vehicles": 11,
+                    "current_page": page_query,
+                    "last_page": Math.ceil(filteredTotal / results_per_page_query),
+                    "per_page": results_per_page_query,
+                    "total": filteredTotal,
+                    "all_total": vehicleArray.length,
+                    "total_new_vehicles": totalNewCount,
+                    "total_used_vehicles": totalUsedCount,
                     "offer_vehicles": 0,
                 }
             }
