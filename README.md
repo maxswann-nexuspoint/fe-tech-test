@@ -31,7 +31,7 @@ Font (ignore SF PRO in Figma) - https://fonts.google.com/specimen/Inter
 
 We have created a dummy api endpoint which returns a list of vehicles. Favouriting functionality, viewing vehicles, posting form data, calculating finance for example can all be mocked as you see fit.
 
-api endpoint url: 
+api endpoint url: https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws
 
 Vehicle list found at /vehicles
 Which accepts the following query paramaters
