@@ -40,6 +40,7 @@ Vehicle list found at /vehicles
 - page: number
 - results_per_page: number
 - advert_classification: New | Used | All (default)
+
 e.g. `https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws?page=1&results_per_page=8&advert_classification=New`
 
 ### data structure of api call
