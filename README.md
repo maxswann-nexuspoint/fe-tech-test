@@ -9,7 +9,7 @@ Congratulations on making it to our Technical Challenge. At Nexus Point we wante
 - Efficient handling of data
 - A good understanding of performant code
 
-Focus primarly on the vehicle card component ensuring that it is pixel perfect and responsive. We appreciate your time and don't want you to go overboard on this. As long as we can get a good understanding of how you write code, anything additional you decide to do is purely brownie points.
+We would like you to focus primarly on the vehicle card component ensuring that it is pixel perfect and responsive as well as leveraging the api to show a paginated view of vehicles. We appreciate your time and don't want you to go overboard on this. As long as we can get a good understanding of how you write code, anything additional you decide to do is purely brownie points.
 
 Our stack at Nexus Point:
 
@@ -34,11 +34,31 @@ We have created a dummy api endpoint which returns a list of vehicles. Favouriti
 api endpoint url: https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws
 
 Vehicle list found at /vehicles
-Which accepts the following query paramaters
+
+### Query parameters
 
 - page: number
 - results_per_page: number
 - advert_classification: New | Used | All (default)
+e.g. `https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws?page=1&results_per_page=8&advert_classification=New`
+
+### data structure of api call
+
+```
+{
+  data: [array of vehicle data],
+  meta: {
+    "current_page": number,
+    "last_page": number,
+    "per_page": number,
+    "total": number,
+    "all_total": number,
+    "total_new_vehicles": number,
+    "total_used_vehicles": number,
+    "offer_vehicles": number
+  }
+}
+```
 
 If you need to for whatever reason, you can cd into `/server` and run `yarn dev` to get the api running locally for your own testing purposes.
 
